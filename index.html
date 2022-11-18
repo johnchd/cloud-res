@@ -1,108 +1,67 @@
+<h2>Why this website was made: </h2>
+	<p>
+		<ul>
+			After plateuing finding bugs, I decided it was time to learn something new. 
+			I came across the Cloud Resume Challenge and decided to give it a shot.
+			<br>
+			The goal behind this challenge for me was to learn backend/frontend technologies to help me find more bugs.
+
+			<br>
+			<br>
+			I also wanted to have a place to write about stuff I'm currently learning. 
+			<br>
+			Visit my blog at the following URL: <a href="https://blog.johncrynick.com"> https://blog.johncrynick.com </a> 
+		</ul>
+	</p>
+
+<br>
+
+<h3> Process of creating this website: </h3>
+	<ol>
+		<!-- Step 1 -->
+		<li>Created a basic HTML page and uploaded this to an S3 bucket </li>
+
+		<!-- Step 2 -->
+		<li>Created a CloudFront distribution to host the files within my S3 bucket </li>
+
+		<!-- Step 3 -->
+		<li>Bought domain on GoDaddy </li>
+			<ul>
+	 			<li> Used Route53 to create a hosted zone for the domain purchased on GoDaddy. From here went on to retrieve the address of nameservers. </li>
+	 			<li>Added the above nameservers into GoDaddy. When users go to johncrynick.com, they get forwarded to my AWS infrastructure (CloudFront) </li> 
+	 			<li> After nameservers were updated in Route53, went on to use Amazon Certificate Manager (ACM) to setup https </li> 
+			</ul>
+
+		<!-- Step 4 -->
+		<li>Created 2 DynamoDB tables for: </li>
+			<ul>
+				<li> how many people visited the site </li>
+				<li> who visited the site </li>
+			</ul>
+
+		<!-- Step 5 -->
+		<li>Created Lambada functions written in Python that log information to the DB tables. </li>
+
+		<!-- Step 6 -->
+		<li>Created 2 API's for: </li>
+			<ul>
+				<li> counting visitors </li>
+				<li> logging visitors who visted the website </li>
+			</ul>
+
+		Rather than communication from my website to the DB, I made the 2 interact via an API. <br> Basically everytime a user would visit my website, the API is invoked - triggering the Lambada function and add adding the information to the respective DB table. 
+
+		<!-- Step 7 -->
+		<li> Updated HTML to invoke these API's using JS </li>
+
+		<!-- Step 8 -->
+		<li> Implmeneted CI/CD pipeline using Github to update my S3 bucket. </li>
+
+	</ol>
 
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-
-<head>
-     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-
-     <title>test4jc</title>
-
-     <style type="text/css">
-        * { margin: 0; padding: 0; }
-        body { font: 16px Helvetica, Sans-Serif; line-height: 24px; background: url(images/noise.jpg); }
-        .clear { clear: both; }
-        #page-wrap { width: 800px; margin: 40px auto 60px; }
-        #pic { float: right; margin: -30px 0 0 0; }
-        h1 { margin: 0 0 16px 0; padding: 0 0 16px 0; font-size: 42px; font-weight: bold; letter-spacing: -2px; border-bottom: 1px solid #999; }
-        h2 { font-size: 20px; margin: 0 0 6px 0; position: relative; }
-        h2 span { position: absolute; bottom: 0; right: 0; font-style: italic; font-family: Georgia, Serif; font-size: 16px; color: #999; font-weight: normal; }
-        p { margin: 0 0 16px 0; }
-        a { color: #999; text-decoration: none; border-bottom: 1px dotted #999; }
-        a:hover { border-bottom-style: solid; color: black; }
-        ul { margin: 0 0 32px 17px; }
-        #objective { width: 500px; float: left; }
-        #objective p { font-family: Georgia, Serif; font-style: italic; color: #666; }
-        dt { font-style: italic; font-weight: bold; font-size: 18px; text-align: right; padding: 0 26px 0 0; width: 150px; float: left; height: 100px; border-right: 1px solid #999;  }
-        dd { width: 600px; float: right; }
-        dd.clear { float: none; margin: 0; height: 15px; }
-     </style>
-</head>
-
-
-
-<body>
-
-    <div id="page-wrap">
-        
-        <div id="contact-info" class="vcard">
-        
-            <!-- Microformats! -->
-        
-            <h1 class="fn">John Crynick</h1>
-        
-            <p>
-                Cell: <span class="tel">555-666-7777</span><br />
-                Email: <a class="email" href="mailto:test@test.com">test@test.com</a>
-            </p>
-    </div>
-
-
-
-   ci/cd pipeline test <br> test2  <br>  <br> 
-         newjc <br> tor <br> torTest confirm
-         
-                
-        
-
-        
-
-        
-            
-          
-        <br>
-    	<br>
-    	<br>
-            Skills: self-xss. good at it.
-            
-
-    
-
-    <!-- Counter being displayed: -->
-    <div>
-    	<br>
-    	<br>
-    	<br>
-         <p style = "text-align: left;">
-         Visits: <span id="counter">0</span>
-         </p>
-    </div>
-
-    
-
-
-
-
-
-    <form>
-    	<br>
-    	<br>
-    	<br>
-        <label>First Name :</label>
-        <input type="text" id="fName">
-        <label>Last Name :</label>
-        <input type="text" id="lName">
-        <!-- set button onClick method to call function we defined passing input values as parameters -->
-        <button type="button" onclick="callAPI(document.getElementById('fName').value,document.getElementById('lName').value)">Log name to DB via API</button>
-    </form>
-        
-            
-
-        
-
-    <!-- JS being executed to count users -->
+   <!-- Part 1 -->
+   <!-- JS being executed to count users -->
     <script>
         var xhr = new XMLHttpRequest();
 
@@ -120,11 +79,22 @@
         xhr.send(null);
     </script>
 
+			   <!-- Counter being displayed: -->
+			    <div>
+			    	<br>
+			         <p style = "text-align: left;">
+			         Visits: <span id="counter">0</span>
+			         </p>
+			    </div>
 
 
 
-    
-    <script>
+
+
+
+   <!-- Part 2 -->
+   <!-- JS being executed to log users -->
+	<script>
         // define the callAPI function that takes a first name and last name as parameters
         var callAPI = (firstName,lastName)=>{
             // instantiate a headers object
@@ -147,9 +117,25 @@
             .catch(error => console.log('error', error));
         }
     </script>
+   
+			   <!-- Logger being displayed: -->
+				<form>
+			    	<br>
+			        <label>First Name :</label>
+			        <input type="text" id="fName">
+			        <label>Last Name :</label>
+			        <input type="text" id="lName">
+			        <!-- set button onClick method to call function we defined passing input values as parameters -->
+			        <button type="button" onclick="callAPI(document.getElementById('fName').value,document.getElementById('lName').value)">Log name to DB via API</button>
+			    </form>
 
 
+<br>
+<h5> About me page: coming soon</h5> 
 
-</body>
 
-</html>
+Visit my LinkedIn at the following URL: <a href="https://www.linkedin.com/in/john-c-387a61172/"> https://www.linkedin.com/in/john-c-387a61172/ </a>
+<br>
+Visit my Github at the following URL: <a href="https://github.com/johnchd"> https://github.com/johnchd </a>
+
+
