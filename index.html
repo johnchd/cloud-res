@@ -1,68 +1,209 @@
-<title>Home</title>
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>John Crynick - Resume</title>
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.6.3/css/all.css'>
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Nunito|Cutive+Mono|Open+Sans'><link rel="stylesheet" href="./style.css">
 
-<h2>Why this website was made: </h2>
-	<p>
-		<ul>
-			After plateuing finding bugs, I decided it was time to learn something new. 
-			I came across the Cloud Resume Challenge and decided to give it a shot.
-			<br>
-			The goal behind this challenge for me was to learn backend/frontend technologies to help me find more bugs.
-
-			<br>
-			<br>
-			I also wanted to have a place to write about stuff I'm currently learning. 
-			<br>
-			Visit my blog at the following URL: <a href="https://blog.johncrynick.com"> https://blog.johncrynick.com </a> 
-		</ul>
-	</p>
-
-<br>
-
-<h3> Process of creating this website: </h3>
-	<ol>
-		<!-- Step 1 -->
-		<li>Created a basic HTML page and uploaded this to an S3 bucket </li>
-
-		<!-- Step 2 -->
-		<li>Created a CloudFront distribution to host the files within my S3 bucket </li>
-
-		<!-- Step 3 -->
-		<li>Bought domain on GoDaddy </li>
-			<ul>
-	 			<li> Used Route53 to create a hosted zone for the domain purchased on GoDaddy. From here went on to retrieve the address of nameservers. </li>
-	 			<li>Added the above nameservers into GoDaddy. When users go to johncrynick.com, they get forwarded to my AWS infrastructure (CloudFront) </li> 
-	 			<li> After nameservers were updated in Route53, went on to use Amazon Certificate Manager (ACM) to setup https </li> 
-			</ul>
-
-		<!-- Step 4 -->
-		<li>Created 2 DynamoDB tables for: </li>
-			<ul>
-				<li> how many people visited the site </li>
-				<li> who visited the site </li>
-			</ul>
-
-		<!-- Step 5 -->
-		<li>Created Lambada functions written in Python that log information to the DB tables. </li>
-
-		<!-- Step 6 -->
-		<li>Created 2 API's for: </li>
-			<ul>
-				<li> counting visitors </li>
-				<li> logging visitors who visted the website </li>
-			</ul>
-
-		Rather than communication from my website to the DB, I made the 2 interact via an API. <br> Basically everytime a user would visit my website, the API is invoked - triggering the Lambada function and add adding the information to the respective DB table. 
-
-		<!-- Step 7 -->
-		<li> Updated HTML to invoke these API's using JS </li>
-
-		<!-- Step 8 -->
-		<li> Implmeneted CI/CD pipeline using Github to update my S3 bucket. </li>
-
-	</ol>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div id="inner-nav"></div>
+    <div id="container">
+        <div id="profile">
+            <div id="image">
+                <!-- <img id="profile-photo" src="http://mnnit.ac.in/ss/images/shashank.jpg" alt="Profile-Image"> -->
+                <img id="profile-photo" src="/Users/john/Downloads/test/dist/profilePic.jpeg" alt="Profile-Image">
+                <a href="#"><i class="fas fa-pen stroke-transparent"></i></a>
 
 
-   <!-- Part 1 -->
+            </div>
+            <p id="name">John Crynick<br><span id="email">jcrynick@icloud.com</span></p>
+            <p id="designation">Assosicate Security Analyst<br><span id="college">Synack Inc.</span></p>
+
+            <hr width="100%">
+
+             <div id="social-links">
+                <a href="https://github.com/johnchd"> -Visit my Github</a>
+                <br>
+                <a href="https://www.linkedin.com/in/john-c-387a61172/">-Visit my LinkedIn</a>
+            </div>
+                <!-- <a href="https://github.com/johnchd">Github</a> -->
+
+            <hr width="100%">
+
+            <!-- Counter being displayed: -->
+            <p style = "text-align: left;">
+                     Total Site Visitors: <span id="counter">0</span>
+
+            </p>
+
+            <hr width="100%">
+
+            <div id="about">
+                <p style="display:inline;">About</p>
+            </div>
+            <p id="education">Education<br><strong>Bachelors, Computer Information Systems - Cybersecurity</strong></p>
+            <p id="telephone">Telephone<br><strong>440-759-4083</strong></p>
+        </div>
+
+
+        
+
+            <div id="info-cards">
+            <div class="card">
+                <p>&nbsp;&nbsp;&nbsp;Work Experience</p>
+                <ul>
+                    <li><p class="tags">Synack Inc.<br><span>Associate Security Analyst | <span>February 2022 - Current</span></span></p>
+                        <ul>
+                        <li>Triage vulnerabilites discovered by members of Synack Red Team
+                        <li>Validate PoC’s of OWASP Top 10 vulnerabilites including access control/privacy violations, IDORs, reflected/persistent/DOM XSS, limited/full Server-Side Request Forgery, CSRF, RCE, and SQLi 
+                        <li>Validated patch verifications to ensure the client was secure
+                        <li>Daily usage of tools including but not limited to BurpSuite, Metasploit, SQLmap, and other tools to validate vulnerabilities and identify false positives 
+                        <li>Continuously interface with researchers to answer questions and learn web application vulnerabilities
+                </ul>
+
+        
+                    <li><p class="tags">Synack Inc.<br><span>Security Analyst Intern | <span>Septermber 2021 – February 2022</span></span></p>
+                        <ul>
+                        <li>Validated “missions” (security-tasks) discovered by the Synack Red Team
+                        <li>Responsible for ensuring reports were proofread and in-scope
+                        <li>Worked with Security Analysts to establish a methodology for vulnerability triage
+                </ul>
+
+
+                <li><p class="tags">University of Akron<br><span>Networking Technician (Co-Op) | <span>June 2021 – August 2021</span></span></p>
+                        <ul>
+                        <li>Improved hardening on LAN Devices
+                        <li>Integrated logging system with Active Directory 
+                        <li>Analyzed network ports, cables, and LANs to solve connectivity issues
+                        <li>Helped manage network with over 20,000 students
+
+                </ul>
+
+
+                <li><p class="tags">Northern Technical Group<br><span> Lifecycle Technician (On-call) | <span>June 2021 – August 2021</span></span></p>
+                        <ul>
+                        <li>Perform in the implementation of new and existing technology
+                        <li>Assisted in migration of user machines from one location to another
+                        <li>Ensured quality assurance of products before delivering to customers
+                        <li>Assisted team lead to manage and deploy lifecycle services
+                </ul>
+
+
+                <li><p class="tags">CMIT Solutions of Cleveland Downtown and East<br><span> Network Technician Intern | <span>June 2020 – August 2020</span></span></p>
+                        <ul>
+                        <li>Assisted in the implementation and documentation of networks
+                        <li>Contributed to database project utilizing SQL server
+                        <li>Work within a team of like-minded professionals to plan and deploy MSP services
+                </ul>
+
+
+                <li><p class="tags">Cleveland Clinic (Sub-Contractor of IBM)<br><span> Desktop Support Analyst | <span>June 2019    – August    2019</span></span></p>
+                        <ul>
+                        <li>Operated within well-defined guidelines documenting tickets and maintaining equipment inventory list
+                        <li>Installed and maintained Windows and desktop software, service packs, patches, and anti-virus updates
+                        <li>Provided basic support ensuring desktop and other peripherals full connectivity
+                        <li>Cultivated strong customer relationships through cheerful, efficient service in fast-paced environment
+
+                </ul>
+            </div>
+
+
+
+        
+
+
+            <div class="card">
+                <p>Technical Skills</p>
+                    <li>Python - regex, making requests, parsing, and displaying data
+                    <li>Tools: Burpsuite, Metasploit, SQLMap, Nmap
+                    <li>OWASP Top 10
+            </div>
+
+
+            <div class="card">
+                <p>Technical Achievements</p>
+                    As a member of Synack Red Team (bug-bounty contractor), I performed enumeration on multiple enterprises identifying/exploiting vulnerabilities including persistent XSS, access control/privacy violations, and lack of rate-limiting.
+            </div>
+
+            <div class="card">
+                <p>Certifications</p>
+                    <li>CompTIA A+
+                        <li>Cisco CCNA
+            </div>
+
+
+            <div class="card">
+                    <h3> Process of creating this website: </h3>
+    <ol>
+        <!-- Step 1 -->
+        <li>Created a basic HTML page and uploaded this to an S3 bucket </li>
+
+        <!-- Step 2 -->
+        <li>Created a CloudFront distribution to host the files within my S3 bucket </li>
+
+        <!-- Step 3 -->
+        <li>Bought domain on GoDaddy </li>
+            <ul>
+                <li> Used Route53 to create a hosted zone for the domain purchased on GoDaddy. From here went on to retrieve the address of nameservers. </li>
+                <li>Added the above nameservers into GoDaddy. When users go to johncrynick.com, they get forwarded to my AWS infrastructure (CloudFront) </li> 
+                <li> After nameservers were updated in Route53, went on to use Amazon Certificate Manager (ACM) to setup https </li> 
+            </ul>
+
+        <!-- Step 4 -->
+        <li>Created 2 DynamoDB tables for: </li>
+            <ul>
+                <li> how many people visited the site </li>
+                <li> who visited the site </li>
+            </ul>
+
+        <!-- Step 5 -->
+        <li>Created Lambada functions written in Python that log information to the DB tables. </li>
+
+        <!-- Step 6 -->
+        <li>Created 2 API's for: </li>
+            <ul>
+                <li> counting visitors </li>
+                <li> logging visitors who visted the website </li>
+            </ul>
+
+        
+        -Rather than communication from my website to the DB, I made the 2 interact via an API.<br> -Basically everytime a user would visit my website, the API is invoked - triggering the Lambada function and add adding the information to the respective DB table. 
+
+        <!-- Step 7 -->
+        <li> Updated HTML to invoke these API's using JS </li>
+
+        <!-- Step 8 -->
+        <li> Implmeneted CI/CD pipeline using Github to update my S3 bucket. </li>
+
+    </ol>
+            </div>
+    
+
+
+
+        </div>
+    </div>
+<!-- partial -->
+  
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- Part 1 -->
    <!-- JS being executed to count users -->
     <script>
         var xhr = new XMLHttpRequest();
@@ -81,13 +222,13 @@
         xhr.send(null);
     </script>
 
-			   <!-- Counter being displayed: -->
-			    <div>
-			    	<br>
-			         <p style = "text-align: left;">
-			         Visits: <span id="counter">0</span>
-			         </p>
-			    </div>
+               <!-- Counter being displayed: -->
+                <div>
+                    <br>
+                     <p style = "text-align: left;">
+                     <!-- Visits: <span id="counter">0</span> -->
+                     </p>
+                </div>
 
 
 
@@ -96,7 +237,7 @@
 
    <!-- Part 2 -->
    <!-- JS being executed to log users -->
-	<script>
+    <script>
         // define the callAPI function that takes a first name and last name as parameters
         var callAPI = (firstName,lastName)=>{
             // instantiate a headers object
@@ -120,41 +261,16 @@
         }
     </script>
    
-			   <!-- Logger being displayed: -->
-				<form>
-			    	<br>
-			        <label>First Name :</label>
-			        <input type="text" id="fName">
-			        <label>Last Name :</label>
-			        <input type="text" id="lName">
-			        <!-- set button onClick method to call function we defined passing input values as parameters -->
-			        <button type="button" onclick="callAPI(document.getElementById('fName').value,document.getElementById('lName').value)">Log name to DB via API</button>
-			    </form>
-
-
-<br>
-<h5> About me page: coming soon</h5> 
-
-
-Visit my LinkedIn at the following URL: <a href="https://www.linkedin.com/in/john-c-387a61172/"> https://www.linkedin.com/in/john-c-387a61172/ </a>
-<br>
-Visit my Github at the following URL: <a href="https://github.com/johnchd"> https://github.com/johnchd </a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+               <!-- Logger being displayed: -->
+                <form>
+                    <br>
+                    <label>First Name :</label>
+                    <input type="text" id="fName">
+                    <label>Last Name :</label>
+                    <input type="text" id="lName">
+                    <!-- set button onClick method to call function we defined passing input values as parameters -->
+                    <button type="button" onclick="callAPI(document.getElementById('fName').value,document.getElementById('lName').value)">Log name to DB via API</button>
+                </form>
 
 
 
