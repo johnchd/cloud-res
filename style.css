@@ -70,13 +70,17 @@ hr{
     padding: 0 !important;
 }
 #name, #about > p{
-    font-weight: bolder;
+/*    font-weight: bolder;*/
     font-family: 'Open Sans', sans-serif;
 }
-#email{
+#email {
     font-size: 15px !important;
     font-weight: bold !important;
-    font-family: 'Cutive Mono',monospace;
+    font-family: 'Open Sans', sans-serif;
+    color: #0073e6; /* A distinct blue */
+    word-break: break-word;
+    display: block; /* Ensures proper alignment */
+    margin-top: 5px;
 }
 #college,#email,#year-graduation,#education,#more-about,#telephone,#fax{
     color: #555;
@@ -139,7 +143,7 @@ strong,span{
 }
 .card > p{
     color: #0e141e;
-    font-weight: bolder;
+/*    font-weight: bolder;*/
     font-size: 18px;
     line-height: 2;
 }
@@ -164,7 +168,7 @@ strong,span{
 }
 .tags{
     font-size: 17px;
-    font-weight: bolder;
+/*    font-weight: bolder;*/
 }
 .tags ~ a{
     display: none !important;
