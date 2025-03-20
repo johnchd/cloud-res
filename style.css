@@ -56,7 +56,7 @@ hr{
     display: block;
 }
 #name{
-    font-size: 18px !important;
+    font-size: 16px !important;
     line-height: 20px !important;
 }
 #about,.card > ul > li{
