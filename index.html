@@ -13,21 +13,23 @@
     <div id="container">
         <div id="profile">
             <div id="image">
-                 <img id="profile-photo" src="https://media.licdn.com/dms/image/D5603AQH4vYb74pZjbg/profile-displayphoto-shrink_800_800/0/1706999407453?e=1712793600&v=beta&t=hZh1sOYO72Seh9tMk2iZPXOFZ-eW6MeTHr2sJgyqXeg" alt="Profile-Image">
+                 <img id="profile-photo" src="profilePic.jpeg" alt="Profile-Image">
             </div>
 
 
-            <p id="name">John Crynick<br><span id="email">jcrynick@icloud.com</span></p>
+            <!-- <p id="name">John Crynick<br><span id="email">jcrynick@icloud.com</span></p> -->
+            <p id="name">John Crynick<a id="email" href="mailto:jcrynick@icloud.com" style="color: blue; text-decoration: underline;">jcrynick@icloud.com</a></p>
+            
             <p id="designation">Application Security Engineer<br><span id="college">Tyler Technologies</span></p>
 
             <hr width="100%">
 
              <div id="social-links">
-                <!-- <a href="https://github.com/johnchd"> -Visit my Github</a>-->
-                <!-- <br> -->
-                <a href="https://www.linkedin.com/in/john-c-387a61172/">-Visit my LinkedIn</a>
+                <a href="https://github.com/johnchd">- Visit my <span style="color: blue; text-decoration: underline;">Github</span></a>
                 <br>
-                <a href="https://johnchd.github.io/">-Visit my Blog</a>
+                <a href="https://www.linkedin.com/in/john-c-387a61172/">- Visit my <span style="color: blue; text-decoration: underline;">LinkedIn</span></a>
+                <br>
+                <a href="https://johnchd.github.io/">- Visit my <span style="color: blue; text-decoration: underline;">Blog</span></a>
             </div>
                 <!-- <a href="https://github.com/johnchd">Github</a> -->
 
@@ -42,31 +44,86 @@
             <hr width="100%">
 
             <div id="about">
-                <p style="display:inline;">About</p>
+                <p style="display:inline;">Education:</p>
             </div>
-            <p id="education">Education<br><strong>Bachelors, Computer Information Systems - Cybersecurity</strong></p>
+            <!-- <p id="education">Education<br><strong>Bachelors, Computer Information Systems - Cybersecurity</strong></p> -->
+            <!-- <p><strong>Bachelors, Computer Information Systems - Cybersecurity</strong></p> -->
+            <p>Bachelors, Computer Information Systems - Cybersecurity</p>
+
+
+
+            <hr width="100%">
+
+            <form>
+                <p style="display:inline;">Try out my Lambda:</p>
+            <!-- <p> <strong>Try out my Lambda:</strong></p> -->
+
+            <div>
+                <label for="fName">First Name:</label>
+                <input type="text" id="fName" name="fName" required>
+            </div>
+
+            <div>
+                <label for="lName">Last Name:</label>
+                <input type="text" id="lName" name="lName" required>
+            </div>
+
+            <div>
+                <button type="button" onclick="callAPI(document.getElementById('fName').value, document.getElementById('lName').value)">
+                    Log Name to DB via API
+                </button>
+            </div>
+        </form>
+
+
         </div>
+
+
 
 
         
 
             <div id="info-cards">
+
+
+<!--             <div class="card">
+                <p>About Me</p>
+                   About me section
+            </div> -->
+
             <div class="card">
-                 <!-- <p>&nbsp;&nbsp;&nbsp;Work Experience</p> -->
-                <p>&nbsp;&nbsp;&nbsp;Work Experience</p>
+                <p>Certifications</p>
+                    <li>CompTIA A+ 
+                    <li><a href="https://cp.certmetrics.com/cisco/en/public/verify/credential/EL8QV85CPL1Q1TSM" target="_blank" style="color: blue; text-decoration: underline;">Cisco CCNA</a></li>
+                    <li><a href="BlackSky_cert.pdf" target="_blank" style="color: blue; text-decoration: underline;">HTB BlackSky: Hailstorm (AWS)</a></li>
+                    <li><a href="CBBH_cert.pdf" target="_blank" style="color: blue; text-decoration: underline;">HTB Certified Bug Bounty Hunter</a></li>
+            </div>
+
+            <div class="card">
+                <p>CVEs</p>
+                <li><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-25925" target="_blank" style="color: blue; text-decoration: underline;">CVE-2025-25925</a></li>
+                <li><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-25927" target="_blank" style="color: blue; text-decoration: underline;">CVE-2025-25927</a></li>
+                <li><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-25928" target="_blank" style="color: blue; text-decoration: underline;">CVE-2025-25928</a></li>
+                <li><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-25929" target="_blank" style="color: blue; text-decoration: underline;">CVE-2025-25929</a></li>
+
+            </div>
+
+
+
+
+            <div class="card">
+                <p>&nbsp;Work Experience</p>
 
 
                 <ul>
-                    <li>
                         <p class="tags">Tyler Technologies<br><span>Application Security Engineer | <span>April 2023 - Current</span></span></p>
                         <ul>
                             <li>Test Tyler products for OWASP Top Ten vulnerabilities using both automated and manual testing</li>
                             <li>Provide knowledge and guidance to the application development teams about security vulnerabilities and applicable remediation paths</li>
                             <li>Execute project plans and maintain the scope, schedule, and each party’s responsibilities</li>
-                            <li>Work with teammates to learn, regularly share skills, and foster team excellence</li>
+                            <li>Work with teammates to learn and regularly share skills</li>
                             <li>Participate in security team meetings that facilitate secure design and threat modeling</li>
                         </ul>
-                    </li>
                 </ul>
 
 
@@ -112,7 +169,7 @@
 
             <ul>
                 <li>
-                    <p class="tags">Northern Technical Group<br><span>Lifecycle Technician (On-call) | <span>June 2021 – August 2021</span></span></p>
+                    <p class="tags">Northern Technical Group<br><span>Lifecycle Technician (On-call) | <span>June 2020 – August 2021</span></span></p>
                     <ul>
                         <li>Perform in the implementation of new and existing technology</li>
                         <li>Assisted in migration of user machines from one location to another</li>
@@ -122,37 +179,12 @@
                 </li>
             </ul>
 
-
-            <ul>
-                <li>
-                    <p class="tags">CMIT Solutions of Cleveland Downtown and East<br><span>Network Technician Intern | <span>June 2020 – August 2020</span></span></p>
-                    <ul>
-                        <li>Assisted in the implementation and documentation of networks</li>
-                        <li>Contributed to database project utilizing SQL server</li>
-                        <li>Work within a team of like-minded professionals to plan and deploy MSP services</li>
-                    </ul>
-                </li>
-            </ul>
-
-
-            <ul>
-                <li>
-                    <p class="tags">Cleveland Clinic (Sub-Contractor of IBM)<br><span>Desktop Support Analyst | <span>June 2019 – August 2019</span></span></p>
-                    <ul>
-                        <li>Operated within well-defined guidelines documenting tickets and maintaining equipment inventory list</li>
-                        <li>Installed and maintained Windows and desktop software, service packs, patches, and anti-virus updates</li>
-                        <li>Provided basic support ensuring desktop and other peripherals full connectivity</li>
-                        <li>Cultivated strong customer relationships through cheerful, efficient service in fast-paced environment</li>
-                    </ul>
-                </li>
-            </ul>
-
             </div>
 
         
 
 
-            <div class="card">
+<!--             <div class="card">
                 <p>Technical Skills</p>
                     <li>Python - regex, making requests, parsing, and displaying data
                     <li>Tools: Burpsuite, Metasploit, SQLMap, Nmap
@@ -167,13 +199,8 @@
                     <br>
                     As an associate security analyst, I implemented a Python-based automation script to optimize our missions queue, resulting in a significant reduction in processing time. The script streamlined the creation of requests and parsing of data, freeing up valuable time to focus on our vulnerability queue. This increased efficiency allowed me and my team to better prioritize and manage our workload, ultimately leading to a more effective and productive workflow. 
               
-            </div>
+            </div> -->
 
-            <div class="card">
-                <p>Certifications</p>
-                    <li>CompTIA A+
-                        <li>Cisco CCNA
-            </div>
 
 
             <div class="card">
@@ -302,13 +329,15 @@
         }
     </script>
    
-               <!-- Logger being displayed: -->
-                <form>
-                    <br>
-                    <label>First Name :</label>
-                    <input type="text" id="fName">
-                    <label>Last Name :</label>
-                    <input type="text" id="lName">
-                    <!-- set button onClick method to call function we defined passing input values as parameters -->
-                    <button type="button" onclick="callAPI(document.getElementById('fName').value,document.getElementById('lName').value)">Log name to DB via API</button>
-                </form>
+
+
+
+
+
+
+
+
+
+
+
+
