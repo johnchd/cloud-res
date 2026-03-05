@@ -1,359 +1,676 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>John Crynick - Resume</title>
-  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.6.3/css/all.css'>
-<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Nunito|Cutive+Mono|Open+Sans'><link rel="stylesheet" href="./style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>John Crynick — Product Security</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --white: #ffffff;
+      --off-white: #f9f7f4;
+      --cream: #f2ede6;
+      --border: #e5e0d8;
+      --border-dark: #d4cdc4;
+      --text: #2c2c2c;
+      --muted: #8a8580;
+      --subtle: #b5b0a8;
+      --accent: #1a3a5c;
+      --accent-light: #2d5a8e;
+      --heading-font: 'Playfair Display', Georgia, serif;
+      --body-font: 'DM Sans', sans-serif;
+    }
 
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--white);
+      color: var(--text);
+      font-family: var(--body-font);
+      font-size: 15px;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.93);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 64px;
+      height: 64px;
+    }
+
+    .nav-logo {
+      font-family: var(--heading-font);
+      font-weight: 700;
+      font-size: 19px;
+      color: var(--accent);
+      letter-spacing: -0.3px;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    .nav-cta {
+      font-size: 13px !important;
+      font-weight: 500 !important;
+      color: var(--accent) !important;
+      border: 1px solid var(--accent);
+      padding: 7px 18px;
+      transition: all 0.2s !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--accent) !important;
+      color: white !important;
+    }
+
+    /* SECTIONS */
+    section {
+      padding: 96px 64px;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 56px;
+    }
+
+    .section-eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    .section-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .section-title {
+      font-family: var(--heading-font);
+      font-size: clamp(28px, 3vw, 40px);
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -1px;
+      margin-bottom: 48px;
+    }
+
+    /* ABOUT */
+    .about-text {
+      max-width: 640px;
+    }
+
+    .about-text p {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1.8;
+    }
+
+    /* EXPERIENCE */
+    .exp-list { display: flex; flex-direction: column; }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 48px;
+      padding: 40px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .exp-item:first-child { padding-top: 0; }
+
+    .exp-date {
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .exp-company {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .exp-badge {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: white;
+      background: var(--accent);
+      padding: 3px 10px;
+    }
+
+    .exp-role {
+      font-family: var(--heading-font);
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: -0.3px;
+      margin-bottom: 16px;
+      line-height: 1.2;
+    }
+
+    .exp-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .exp-bullets li {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text);
+      padding-left: 20px;
+      position: relative;
+      line-height: 1.6;
+    }
+
+    .exp-bullets li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--subtle);
+      font-size: 12px;
+      top: 3px;
+    }
+
+    /* CVE SECTION */
+    .cve-section {
+      background: var(--accent);
+      padding: 96px 64px;
+    }
+
+    .cve-section .section-eyebrow { color: rgba(255,255,255,0.5); }
+    .cve-section .section-rule { background: rgba(255,255,255,0.12); }
+    .cve-section .section-title { color: white; }
+
+    .cve-intro {
+      font-size: 16px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.6);
+      max-width: 520px;
+      margin-bottom: 44px;
+      line-height: 1.75;
+    }
+
+    .cve-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 12px;
+    }
+
+    .cve-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 22px 24px;
+      text-decoration: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.2s;
+    }
+
+    .cve-card:hover {
+      background: rgba(255,255,255,0.13);
+      border-color: rgba(255,255,255,0.28);
+    }
+
+    .cve-id {
+      font-size: 14px;
+      font-weight: 500;
+      color: white;
+    }
+
+    .cve-arrow {
+      color: rgba(255,255,255,0.3);
+      transition: transform 0.2s, color 0.2s;
+    }
+
+    .cve-card:hover .cve-arrow {
+      transform: translateX(4px);
+      color: rgba(255,255,255,0.8);
+    }
+
+    /* CERTS */
+    .certs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+    }
+
+    .cert-card {
+      border: 1px solid var(--border);
+      padding: 24px 28px;
+      text-decoration: none;
+      display: block;
+      transition: all 0.2s;
+      background: var(--white);
+    }
+
+    .cert-card:hover {
+      border-color: var(--accent);
+      background: var(--off-white);
+    }
+
+    .cert-type {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .cert-name {
+      font-family: var(--heading-font);
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--accent);
+      line-height: 1.3;
+    }
+
+    .cert-link-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 12px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent-light);
+    }
+
+    /* CONTACT */
+    .contact-section { background: var(--off-white); }
+
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-text p {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      padding: 13px 28px;
+      font-family: var(--body-font);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+      background: var(--accent);
+      color: white;
+      transition: background 0.2s;
+    }
+
+    .btn-primary:hover { background: var(--accent-light); }
+
+    .contact-links {
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 24px;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .contact-link:last-child { border-bottom: none; }
+    .contact-link:hover { background: var(--accent); }
+    .contact-link:hover .cl-label,
+    .contact-link:hover .cl-value,
+    .contact-link:hover .cl-arrow { color: white; }
+
+    .cl-label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      min-width: 80px;
+      transition: color 0.2s;
+    }
+
+    .cl-value {
+      font-size: 14px;
+      color: var(--text);
+      transition: color 0.2s;
+      flex: 1;
+      padding-left: 16px;
+    }
+
+    .cl-arrow {
+      color: var(--subtle);
+      transition: color 0.2s;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 28px 64px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--white);
+    }
+
+    .footer-name {
+      font-family: var(--heading-font);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .footer-copy { font-size: 12px; color: var(--subtle); }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 0 24px; }
+      .nav-links { display: none; }
+      section, .cve-section, .contact-section { padding: 64px 24px; }
+      .exp-item { grid-template-columns: 1fr; gap: 8px; }
+      .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+      footer { padding: 24px; flex-direction: column; gap: 8px; text-align: center; }
+    }
+  </style>
 </head>
 <body>
-<!-- partial:index.partial.html -->
-<div id="inner-nav"></div>
-    <div id="container">
-        <div id="profile">
-            <div id="image"> 
-                 <img id="profile-photo" src="profilePic.jpeg" alt="Profile-Image">
-            </div>
 
-
-            <!-- <p id="name">John Crynick<br><span id="email">jcrynick@icloud.com</span></p> -->
-            <p id="name">John Crynick<br><a id="email" href="mailto:jcrynick@icloud.com" style="color: blue; text-decoration: underline;">jcrynick@icloud.com</a></p>
-            
-            <p id="designation">Application Security Engineer<br><span id="college">Tyler Technologies</span></p>
-
-            <hr width="100%">
-
-             <div id="social-links">
-                <a href="https://github.com/johnchd">- Visit my <span style="color: blue; text-decoration: underline;">Github</span></a>
-                <br>
-                <a href="https://www.linkedin.com/in/john-c-387a61172/">- Visit my <span style="color: blue; text-decoration: underline;">LinkedIn</span></a>
-                <br>
-                <a href="https://johnchd.github.io/">- Visit my <span style="color: blue; text-decoration: underline;">Blog</span></a>
-            </div>
-                <!-- <a href="https://github.com/johnchd">Github</a> -->
-
-            <hr width="100%">
-
-            <!-- Counter being displayed: -->
-            <p style = "text-align: left;">
-                     Total Site Visitors: <span id="counter">0</span>
-
-            </p>
-
-            <hr width="100%">
-
-            <div id="about">
-                <p style="display:inline;">Education:</p>
-            </div>
-            <!-- <p id="education">Education<br><strong>Bachelors, Computer Information Systems - Cybersecurity</strong></p> -->
-            <!-- <p><strong>Bachelors, Computer Information Systems - Cybersecurity</strong></p> -->
-            <p>Bachelors, Computer Information Systems - Cybersecurity</p>
-
-
-
-            <hr width="100%">
-
-            <form>
-                <p style="display:inline;">Try out my Lambda:</p>
-            <!-- <p> <strong>Try out my Lambda:</strong></p> -->
-
-            <div>
-                <label for="fName">First Name:</label>
-                <input type="text" id="fName" name="fName" required>
-            </div>
-
-            <div>
-                <label for="lName">Last Name:</label>
-                <input type="text" id="lName" name="lName" required>
-            </div>
-
-            <div>
-                <button type="button" onclick="callAPI(document.getElementById('fName').value, document.getElementById('lName').value)">
-                    Log Name to DB via API
-                </button>
-            </div>
-        </form>
-
-
-        </div>
-
-
-
-
-        
-
-            <div id="info-cards">
-
-
-<!--             <div class="card">
-                <p>About Me</p>
-                   About me section
-            </div> -->
-
-            <div class="card">
-                <p>Certifications:</p>
-                    <li>CompTIA A+ 
-                    <li><a href="https://cp.certmetrics.com/cisco/en/public/verify/credential/EL8QV85CPL1Q1TSM" target="_blank" style="color: blue; text-decoration: underline;">Cisco CCNA</a></li>
-                    <li><a href="BlackSky_cert.pdf" target="_blank" style="color: blue; text-decoration: underline;">HTB BlackSky: Hailstorm (AWS)</a></li>
-                    <li><a href="HTBCERT-DF3C03150D.pdf" target="_blank" style="color: blue; text-decoration: underline;">HTB Certified Web Exploitation Specialist</a></li>
-            </div>
-
-            <div class="card">
-                <p>CVEs:</p>
-                <li><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-25925" target="_blank" style="color: blue; text-decoration: underline;">CVE-2025-25925</a></li>
-                <li><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-25927" target="_blank" style="color: blue; text-decoration: underline;">CVE-2025-25927</a></li>
-                <li><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-25928" target="_blank" style="color: blue; text-decoration: underline;">CVE-2025-25928</a></li>
-                <li><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-25929" target="_blank" style="color: blue; text-decoration: underline;">CVE-2025-25929</a></li>
-                <li><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-46052" target="_blank" style="color: blue; text-decoration: underline;">CVE-2025-46052</a></li>
-                <li><a href="https://nvd.nist.gov/vuln/detail/CVE-2025-46053" target="_blank" style="color: blue; text-decoration: underline;">CVE-2025-46053</a></li>
-
-            </div>
-
-
-
-
-            <div class="card">
-                <p>&nbsp;Work Experience:</p>
-
-                <ul>
-                        <p class="tags">Rockwell Automation<br><span>Senior Product Security Engineer - PSIRT | <span>June 2025 - Current</span></span></p>
-                        <ul>
-                             <li> Build the vulnerability response process for Rockwell Automation products observing ISO/IEC 29147 and 30111
-                             <li>Triage reported vulnerabilities from a variety of sources and coordinate response actions with partners including internal teams, government CERT teams, and external researchers
-                             <li>Work with product teams, development teams, product security team members, customer support, legal and external security researchers to ensure resolution of security vulnerabilities or reports.
-                             <li>Coordinate incidents, post-exploitation, and other reported security issues
-                             <li>Advise and partner with product teams on performing risk analysis, mitigation and remediations related to product security vulnerabilities
-                             <li>Contribute to risk reviews and risk analysis to identify systematic issues
-                             <li>Interact with customers on security questions related to Rockwell Automation products
-                        </ul>
-                </ul>
-
-
-                <ul>
-                        <p class="tags">Tyler Technologies<br><span>Application Security Engineer | <span>April 2023 - June 2025</span></span></p>
-                        <ul>
-                            <li>Test Tyler products for OWASP Top Ten vulnerabilities using both automated and manual testing</li>
-                            <li>Provide knowledge and guidance to the application development teams about security vulnerabilities and applicable remediation paths</li>
-                            <li>Execute project plans and maintain the scope, schedule, and each party’s responsibilities</li>
-                            <li>Work with teammates to learn and regularly share skills</li>
-                            <li>Participate in security team meetings that facilitate secure design and threat modeling</li>
-                        </ul>
-                </ul>
-
-
-                <ul>
-                    <li>
-                        <p class="tags">Synack Inc.<br><span>Associate Security Analyst | <span>February 2022 - April 2023</span></span></p>
-                        <ul>
-                            <li>Triage vulnerabilities discovered by members of Synack Red Team</li>
-                            <li>Validate PoC’s of OWASP Top 10 vulnerabilities including access control/privacy violations, IDORs, reflected/persistent/DOM XSS, limited/full Server-Side Request Forgery, CSRF, RCE, and SQLi</li>
-                            <li>Validated patch verifications to ensure the client was secure</li>
-                            <li>Daily usage of tools including but not limited to BurpSuite, Metasploit, SQLmap, and other tools to validate vulnerabilities and identify false positives</li>
-                            <li>Continuously interface with researchers to answer questions and learn web application vulnerabilities</li>
-                        </ul>
-                    </li>
-                </ul>
-
-
-        
-                <ul>
-                    <li>
-                        <p class="tags">Synack Inc.<br><span>Security Analyst Intern | <span>September 2021 – February 2022</span></span></p>
-                        <ul>
-                            <li>Validated “missions” (security-tasks) discovered by the Synack Red Team</li>
-                            <li>Responsible for ensuring reports were proofread and in-scope</li>
-                            <li>Worked with Security Analysts to establish a methodology for vulnerability triage</li>
-                        </ul>
-                    </li>
-                </ul>
-
-
-                <ul>
-                <li>
-                    <p class="tags">University of Akron<br><span>Networking Technician (Co-Op) | <span>June 2021 – August 2021</span></span></p>
-                    <ul>
-                        <li>Improved hardening on LAN Devices</li>
-                        <li>Integrated logging system with Active Directory</li>
-                        <li>Analyzed network ports, cables, and LANs to solve connectivity issues</li>
-                        <li>Helped manage network with over 20,000 students</li>
-                    </ul>
-                </li>
-            </ul>
-
-
-            <ul>
-                <li>
-                    <p class="tags">Northern Technical Group<br><span>Lifecycle Technician (On-call) | <span>June 2020 – August 2021</span></span></p>
-                    <ul>
-                        <li>Perform in the implementation of new and existing technology</li>
-                        <li>Assisted in migration of user machines from one location to another</li>
-                        <li>Ensured quality assurance of products before delivering to customers</li>
-                        <li>Assisted team lead to manage and deploy lifecycle services</li>
-                    </ul>
-                </li>
-            </ul>
-
-            </div>
-
-        
-
-
-<!--             <div class="card">
-                <p>Technical Skills</p>
-                    <li>Python - regex, making requests, parsing, and displaying data
-                    <li>Tools: Burpsuite, Metasploit, SQLMap, Nmap
-                    <li>OWASP Top 10
-            </div>
-
-
-            <div class="card">
-                <p>Technical Achievements</p>
-                    As a member of Synack Red Team (bug-bounty contractor), I performed enumeration on multiple enterprises identifying/exploiting vulnerabilities including persistent XSS, access control/privacy violations, and lack of rate-limiting.
-                    <br>
-                    <br>
-                    As an associate security analyst, I implemented a Python-based automation script to optimize our missions queue, resulting in a significant reduction in processing time. The script streamlined the creation of requests and parsing of data, freeing up valuable time to focus on our vulnerability queue. This increased efficiency allowed me and my team to better prioritize and manage our workload, ultimately leading to a more effective and productive workflow. 
-              
-            </div> -->
-
-
-
-            <div class="card">
-                    <h3> Process of creating this website: </h3>
-    <ol>
-        <!-- Step 1 -->
-        <li>Created a basic HTML page and uploaded this to an S3 bucket </li>
-
-        <!-- Step 2 -->
-        <li>Created a CloudFront distribution to host the files within my S3 bucket </li>
-
-        <!-- Step 3 -->
-        <li>Bought domain on GoDaddy </li>
-            <ul>
-                <li> Used Route53 to create a hosted zone for the domain purchased on GoDaddy. From here went on to retrieve the address of nameservers. </li>
-                <li>Added the above nameservers into GoDaddy. When users go to johncrynick.com, they get forwarded to my AWS infrastructure (CloudFront) </li> 
-                <li> After nameservers were updated in Route53, went on to use Amazon Certificate Manager (ACM) to setup https </li> 
-            </ul>
-
-        <!-- Step 4 -->
-        <li>Created 2 DynamoDB tables for: </li>
-            <ul>
-                <li> how many people visited the site </li>
-                <li> who visited the site </li>
-            </ul>
-
-        <!-- Step 5 -->
-        <li>Created Lambada functions written in Python that log information to the DB tables. </li>
-
-        <!-- Step 6 -->
-        <li>Created 2 API's for: </li>
-            <ul>
-                <li> counting visitors </li>
-                <li> logging visitors who visted the website </li>
-            </ul>
-
-        
-        -Rather than communication from my website to the DB, I made the 2 interact via an API.<br> -Basically everytime a user would visit my website, the API is invoked - triggering the Lambada function and add adding the information to the respective DB table. 
-
-        <!-- Step 7 -->
-        <li> Updated HTML to invoke these API's using JS </li>
-
-        <!-- Step 8 -->
-        <li> Implmeneted CI/CD pipeline using Github to update my S3 bucket. </li>
-
-    </ol>
-            </div>
-    
-
-
-
-        </div>
+  <nav>
+    <a href="#" class="nav-logo">John Crynick</a>
+    <ul class="nav-links">
+      <!-- <li><a href="#about">About</a></li> -->
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#credentials">Credentials</a></li>
+      <li><a href="#contact" class="nav-cta">Get in Touch</a></li>
+    </ul>
+  </nav>
+
+
+  <!-- EXPERIENCE -->
+  <section id="experience" style="background: var(--off-white);">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Career</span>
+      <div class="section-rule"></div>
     </div>
-<!-- partial -->
-  
+    <div class="section-title reveal">Work Experience</div>
+
+    <div class="exp-list">
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-date">June 2025 — Present</div>
+          <div class="exp-company">Rockwell Automation</div>
+          <span class="exp-badge">Current</span>
+        </div>
+        <div>
+          <div class="exp-role">Senior Product Security Engineer — PSIRT</div>
+          <ul class="exp-bullets">
+            <li>Own the end-to-end vulnerability lifecycle for Rockwell Automation products, including intake, triage, risk assessment, remediation coordination, and public disclosure</li>
+            <li>Triage reported vulnerabilities from internal teams, external researchers, and government CERTs</li>
+            <li>Drive remediation of product security vulnerabilities by coordinating fixes across engineering, product management, legal, and customer support teams</li>
+            <li>Respond to and coordinate product security incidents, post-exploitation findings, and other reported security issues</li>
+            <li>Architect Jira workflow improvements, custom fields, and automation to enhance vulnerability tracking, reporting, and PSIRT data quality</li>
+            <li>Manage and expand the product security bug bounty program, improving vulnerability intake and collaboration with external researchers</li>
+            <!-- <li>Lead Root Cause Analysis initiatives to identify systemic issues and prevent recurring vulnerabilities across product teams</li> -->
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-date">April 2023 — June 2025</div>
+          <div class="exp-company">Tyler Technologies</div>
+        </div>
+        <div>
+          <div class="exp-role">Application Security Engineer</div>
+          <ul class="exp-bullets">
+            <li>Tested Tyler products for OWASP Top 10 vulnerabilities using automated and manual methodologies</li>
+            <li>Provided security guidance and remediation paths to development teams across the organization</li>
+            <li>Participated in threat modeling sessions and supported secure design reviews</li>
+            <li>Executed security project plans, managing scope, schedule, and cross-functional responsibilities</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-date">Feb 2022 — April 2023</div>
+          <div class="exp-company">Synack Inc.</div>
+        </div>
+        <div>
+          <div class="exp-role">Associate Security Analyst</div>
+          <ul class="exp-bullets">
+            <li>Triaged and validated OWASP Top 10 vulnerabilities from the Synack Red Team, including IDORs, XSS, SSRF, CSRF, RCE, and SQLi</li>
+            <li>Performed patch verifications to confirm client-side remediation of disclosed vulnerabilities</li>
+            <li>Daily usage of Burp Suite, Metasploit, and SQLMap to validate findings and identify false positives</li>
+            <li>Developed a Python automation script to handle mission queue delegation, reducing manual triage overhead</li>
+            <li>Served as a technical point of contact for external researchers, answering vulnerability questions and refining triage methodology</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-date">Sept 2021 — Feb 2022</div>
+          <div class="exp-company">Synack Inc.</div>
+        </div>
+        <div>
+          <div class="exp-role">Security Analyst Intern</div>
+          <ul class="exp-bullets">
+            <li>Validated security tasks discovered by the Synack Red Team and ensured reports were properly scoped</li>
+            <li>Collaborated with analysts to develop a structured vulnerability triage methodology</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="exp-item reveal">
+        <div class="exp-meta">
+          <div class="exp-date">June 2021 — Aug 2021</div>
+          <div class="exp-company">University of Akron</div>
+        </div>
+        <div>
+          <div class="exp-role">Networking Technician (Co-Op)</div>
+          <ul class="exp-bullets">
+            <li>Hardened LAN devices and integrated logging infrastructure with Active Directory</li>
+            <li>Managed network infrastructure serving 20,000+ students</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CVEs -->
+  <div class="cve-section" id="research">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Security Research</span>
+      <div class="section-rule"></div>
+    </div>
+    <div class="section-title reveal">Published CVEs</div>
+    <p class="cve-intro reveal">
+      Publicly disclosed vulnerability research, indexed in the National Vulnerability Database.
+    </p>
+    <div class="cve-grid reveal">
+      <a href="https://nvd.nist.gov/vuln/detail/CVE-2025-25925" target="_blank" class="cve-card">
+        <span class="cve-id">CVE-2025-25925</span><span class="cve-arrow">→</span>
+      </a>
+      <a href="https://nvd.nist.gov/vuln/detail/CVE-2025-25927" target="_blank" class="cve-card">
+        <span class="cve-id">CVE-2025-25927</span><span class="cve-arrow">→</span>
+      </a>
+      <a href="https://nvd.nist.gov/vuln/detail/CVE-2025-25928" target="_blank" class="cve-card">
+        <span class="cve-id">CVE-2025-25928</span><span class="cve-arrow">→</span>
+      </a>
+      <a href="https://nvd.nist.gov/vuln/detail/CVE-2025-25929" target="_blank" class="cve-card">
+        <span class="cve-id">CVE-2025-25929</span><span class="cve-arrow">→</span>
+      </a>
+      <a href="https://nvd.nist.gov/vuln/detail/CVE-2025-46052" target="_blank" class="cve-card">
+        <span class="cve-id">CVE-2025-46052</span><span class="cve-arrow">→</span>
+      </a>
+      <a href="https://nvd.nist.gov/vuln/detail/CVE-2025-46053" target="_blank" class="cve-card">
+        <span class="cve-id">CVE-2025-46053</span><span class="cve-arrow">→</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- CREDENTIALS -->
+  <section id="credentials">
+    <div class="section-header reveal">
+      <span class="section-eyebrow">Education & Credentials</span>
+      <div class="section-rule"></div>
+    </div>
+    <div class="section-title reveal">Certifications</div>
+    <div class="certs-grid reveal">
+      <div class="cert-card">
+        <div class="cert-type">Education</div>
+        <div class="cert-name">B.S. Computer Information Systems — Cybersecurity</div>
+        <div style="margin-top:8px;font-size:13px;color:var(--muted);">University of Akron</div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-type">Certification</div>
+        <div class="cert-name">CompTIA A+</div>
+      </div>
+      <a href="https://cp.certmetrics.com/cisco/en/public/verify/credential/EL8QV85CPL1Q1TSM" target="_blank" class="cert-card">
+        <div class="cert-type">Certification</div>
+        <div class="cert-name">Cisco CCNA</div>
+        <div class="cert-link-label">Verify credential →</div>
+      </a>
+      <a href="BlackSky_cert.pdf" target="_blank" class="cert-card">
+        <div class="cert-type">HackTheBox</div>
+        <div class="cert-name">BlackSky: Hailstorm (AWS)</div>
+        <div class="cert-link-label">View certificate →</div>
+      </a>
+      <a href="HTBCERT-DF3C03150D.pdf" target="_blank" class="cert-card">
+        <div class="cert-type">HackTheBox</div>
+        <div class="cert-name">Certified Web Exploitation Specialist</div>
+        <div class="cert-link-label">View certificate →</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section">
+    <div class="contact-inner">
+      <div>
+        <div class="section-header reveal">
+          <span class="section-eyebrow">Contact</span>
+          <div class="section-rule"></div>
+        </div>
+        <div class="section-title reveal">Let's connect.</div>
+        <div class="contact-text reveal">
+          <p>
+            <!-- Whether you're interested in discussing product security strategy, vulnerability
+            response programs, or potential collaboration — feel free to reach out. -->
+          </p>
+          <a href="mailto:jcrynick@icloud.com" class="btn-primary">Send an Email</a>
+        </div>
+      </div>
+      <div class="contact-links reveal">
+        <a href="mailto:jcrynick@icloud.com" class="contact-link">
+          <span class="cl-label">Email</span>
+          <span class="cl-value">jcrynick@icloud.com</span>
+          <span class="cl-arrow">→</span>
+        </a>
+        <a href="https://www.linkedin.com/in/johncrynick/" target="_blank" class="contact-link">
+          <span class="cl-label">LinkedIn</span>
+          <span class="cl-value">johncrynick</span>
+          <span class="cl-arrow">→</span>
+        </a>
+        <a href="https://github.com/johnchd" target="_blank" class="contact-link">
+          <span class="cl-label">GitHub</span>
+          <span class="cl-value">@johnchd</span>
+          <span class="cl-arrow">→</span>
+        </a>
+        <!-- <a href="https://johnchd.github.io/" target="_blank" class="contact-link">
+          <span class="cl-label">Blog</span>
+          <span class="cl-value">johnchd.github.io</span>
+          <span class="cl-arrow">→</span>
+        </a> -->
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-name">John Crynick</div>
+    <div class="footer-copy">© 2026 · Senior Product Security Engineer</div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
- <!-- Part 1 -->
-   <!-- JS being executed to count users -->
-    <script>
-        var xhr = new XMLHttpRequest();
-
-        xhr.open('GET', 'https://xkkhbfi0nj.execute-api.us-east-1.amazonaws.com/visitorAPI', true);
-
-        xhr.onload = function () {
-        if (xhr.readyState === xhr.DONE) {
-            if (xhr.status === 200) {
-             document.getElementById("counter").innerHTML = xhr.responseText;
-
-        }
-      }
-    };
-
-        xhr.send(null);
-    </script>
-
-               <!-- Counter being displayed: -->
-                <div>
-                    <br>
-                     <p style = "text-align: left;">
-                     <!-- Visits: <span id="counter">0</span> -->
-                     </p>
-                </div>
-
-
-
-
-
-
-   <!-- Part 2 -->
-   <!-- JS being executed to log users -->
-    <script>
-        // define the callAPI function that takes a first name and last name as parameters
-        var callAPI = (firstName,lastName)=>{
-            // instantiate a headers object
-            var myHeaders = new Headers();
-            // add content type header to object
-            myHeaders.append("Content-Type", "application/json");
-            // using built in JSON utility package turn object to string and store in a variable
-            var raw = JSON.stringify({"firstName":firstName,"lastName":lastName});
-            // create a JSON object with parameters for API call and store in a variable
-            var requestOptions = {
-                method: 'POST',
-                headers: myHeaders,
-                body: raw,
-                redirect: 'follow'
-            };
-            // make API call with parameters and use promises to get response
-            fetch("https://wm8qa9fr69.execute-api.us-east-1.amazonaws.com/nameLogger", requestOptions)
-            .then(response => response.text())
-            .then(result => alert(JSON.parse(result).body))
-            .catch(error => console.log('error', error));
-        }
-    </script>
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
